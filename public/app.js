@@ -1,72 +1,45 @@
 $(document).ready(function () {
 
     //scrape new articles
-    $("#scrapeButton").on("submit", function (event) {
+    $("#scrapeButton").on("click", function (event) {
 
         event.preventDefault();
+        console.log("scrape button working");
 
-        $.ajax("/api/scrape", {
-            type: "POST",
-            data: newArticle
+        $.ajax("/api/articles", {
+            type: "GET"
         }).then(
-            function () {
-                window.location.href = "/";
+            function (data) {
+                location.reload();
+            }
+        );
+    });
+
+    //go back to articles
+    $(".danger").on("click", function (event) {
+
+        event.preventDefault();
+        console.log("back button working");
+
+        var id = $(this).attr("data");
+        event.preventDefault();
+
+        $.ajax("/articles", {
+            type: "GET"
+        }).then(
+            function (data) {
+                window.location.href = "/articles";
             }
         );
     });
 
 
-    //save article
-    $("#saveButton").on("click", function (event) {
-
-        event.preventDefault();
-        var id = $(this).data("id");
-
-        var saveArticle = {
-            id: id,
-            saved: true
-        }
-
-        if (confirm("Are you sure you want to save this article?")) {
-            $.ajax("/events/api/deleteArticle", {
-                type: "UPDATE",
-                data: saveArticle
-            }).then(
-                function () {
-                    window.location.href = "/saved";
-                }
-            );
-        }
-    });
-
-
-    //unsave article
-    $(".delete").on("click", function (event) {
-
-        event.preventDefault();
-        var id = $(this).data("id");
-
-        var deleteArticle = {
-            id: id,
-            saved: false
-        }
-
-        if (confirm("Are you sure you want to unsave this article?")) {
-            $.ajax("/events/api/deleteArticle", {
-                type: "UPDATE",
-                data: deleteArticle
-            }).then(
-                function () {
-                    window.location.href = "/saved";
-                }
-            );
-        }
-    });
-
     //add note - pop up modal
-    $("#addNote").on("submit", function (event) {
+    $(".save").on("click", function (event) {
 
-        var id = $(this).data("id");
+        console.log("add note button working");
+
+        var id = $(this).attr("data");
         event.preventDefault();
 
         $.ajax("/addNote/" + id, {
@@ -75,26 +48,34 @@ $(document).ready(function () {
         }).then(
             function () {
                 console.log("adding note");
+                window.location.href = "/addNote/" + id;
+
             });
     });
 
-    //GET UPDATE PAGE
-    $("#update_event").on("click", function (event) {
-        
-        var id = $(this).data("id");
+    //UPDATE PAGE
+    $("#addNote").on("submit", function (event) {
+
+        console.log("submit note button working");
+
+        var id = $(this).attr("data");
         event.preventDefault();
 
         var addNote = {
             id: id,
-            note: $("#note").text().trim()
+            note: $(".addingnote").text().trim(),
+            title: $("#addNote").attr("dataTitle"),
+            link: $("#addNote").attr("dataLink")
         }
+        console.log(addNote);
 
-        $.ajax("/addNote/" + id, {
-            type: "UPDATE",
+        $.ajax("/api/addNote/" + id, {
+            type: "PUT",
             data: addNote
         }).then(
             function () {
                 console.log("updated event");
+                location.reload();
             })
     });
 });

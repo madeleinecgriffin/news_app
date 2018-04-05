@@ -1,7 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var cheerio = require("cheerio");
 var exphbs = require("express-handlebars");
 var db = require("./models");
 
@@ -26,15 +25,10 @@ var hbs = exphbs.create({
 app.set("view engine", "handlebars");
 app.engine("handlebars", hbs.engine);
 
-app.get("/", function (req, res) {
-    res.render("scrape");
-});
-
 require("./routes/apiRoutes.js")(app);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/week18Populater");
-
+mongoose.connect("mongodb://localhost/Articles");
 
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));

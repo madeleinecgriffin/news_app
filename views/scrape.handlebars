@@ -9,9 +9,6 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/saved">Saved Articles</a>
-                </li>
-                <li>
                     <a class="btn btn-danger scrape-new" id="scrapeButton">SCRAPE NEW ARTICLES!</a>
                 </li>
             </ul>
@@ -23,22 +20,17 @@
         <div class="background-image">
         </div>
         <div class="caption">
-            <h1>Mongo Scraper</h1>
-            <p>The Financial Diet Edition</p>
+            <h5>Mongo Scraper</h5>
         </div>
     </div>
 
     <div class="container-fluid article-container">
-        {{#each Article}}
+        {{#each articles}}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3>
-                    <a class="article-link" target="_blank" href="{{this.link}}">{{this.title}}</a>
-                    {{#if saved}}
-                    <a class="btn btn-success save" id="saveButton">Save Article</a>
-                    {{#else}}
-                    <a class="btn btn-danger delete" id="unsaveButton">Article Saved</a>
-                    {{/if}}
+                    <a class="article-link" target="_blank" data="{{this.id}}" href="{{this.link}}">{{this.title}}</a>
+                    <a class="btn btn-success save" data="{{this.id}}" dataLink="{{this.link}}" dataTitle="{{this.title}}">Add Comment</a>
                 </h3>
             </div>
         </div>
@@ -48,7 +40,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>Mongo Scraper</p>
+            <p id="footertag">Mongo Scraper</p>
         </div>
     </footer>
 
