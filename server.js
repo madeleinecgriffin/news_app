@@ -46,7 +46,16 @@ app.use(express.static("public"));
 require("./routes/apiRoutes.js")(app);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/ArticleStore");
+var databaseUri = "mongodb://localhost/ArticleStore";
+
+if (process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI);
+
+}
+else {
+    mongoose.connect(databaseUri);
+
+}
 
 // Start the server
 app.listen(PORT, function() {
