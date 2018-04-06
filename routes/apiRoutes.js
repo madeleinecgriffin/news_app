@@ -3,6 +3,8 @@ var controller = require('../controllers/controller.js');
 var axios = require("axios");
 var cheerio = require("cheerio");
 var mongojs = require("mongojs");
+var express = require("express");
+var router = express.Router();
 
 module.exports = function (app) {
 
@@ -43,7 +45,6 @@ module.exports = function (app) {
 
         db.Article.find({})
             .then(function (dbArticle) {
-
                 return res.render("scrape", { articles: dbArticle });
             })
             .catch(function (err) {
@@ -58,7 +59,6 @@ module.exports = function (app) {
 
         db.Article.find({})
             .then(function (dbArticle) {
-
                 return res.render("scrape", { articles: dbArticle });
             })
             .catch(function (err) {
@@ -71,17 +71,16 @@ module.exports = function (app) {
     app.get("/addNote/:id", function (req, res) {
         // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
         console.log("loading add note get route");
-        console.log(req.params);
-        
+
         db.Article.findOne({ _id: req.params.id })
             // ..and populate all of the notes associated with it
             .populate("note")
             .then(function (dbArticle) {
                 console.log("dbarticle: " + dbArticle);
-                return res.render("saved", {title : req.params.title, link : req.params.link, id : req.params.id});
+                return res.render("saved", {title:dbArticle.title, link:dbArticle.link, notes:dbArticle.notes, id:dbArticle.id});
             })
             .catch(function (err) {
-                res.json(err);
+                return res.json(err);
             });
     });
 
@@ -96,6 +95,7 @@ module.exports = function (app) {
                 // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
                 // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
                 // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+                console.log('dbnoteee', dbNote)
                 return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
             })
             .then(function (dbArticle) {

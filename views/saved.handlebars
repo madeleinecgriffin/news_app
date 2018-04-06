@@ -19,19 +19,21 @@
         </div>
         <div class="background-image">
         </div>
-        <div class="caption">
-            <h5>Mongo Scraper</h5>
+        <div class="caption"> 
+            <h2>{{title}}</h2>
+            <h5>See below to add or view notes for this article.</h5>
         </div>
     </div>
 
     <div class="container-fluid article-container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3>Notes for Article: {{this.title}}</h3>
                 <form id="addNote" data="{{this.id}}" dataLink="{{this.link}}" dataTitle="{{this.title}}">
-                    Add a Note:
+                    <input placeholder="What is the name or subject of your comment?" type="text" name="addingtitle" class="addingtitle">
                     <br>
-                    <input type="text" name="addingnote" class="addingnote">
+                    Comment:
+                    <br>
+                    <input placeholder="Type your comment here." type="text" name="addingnote" class="addingnote">
                     <br>
                     <input type="submit" name="submitbutton">
                 </form>

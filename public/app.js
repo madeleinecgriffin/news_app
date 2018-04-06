@@ -42,6 +42,8 @@ $(document).ready(function () {
         var id = $(this).attr("data");
         event.preventDefault();
 
+        console.log('id', id)
+
         $.ajax("/addNote/" + id, {
             type: "GET",
             data: id
@@ -67,6 +69,7 @@ $(document).ready(function () {
             title: $("#addNote").attr("dataTitle"),
             link: $("#addNote").attr("dataLink")
         }
+
         console.log(addNote);
 
         $.ajax("/api/addNote/" + id, {
