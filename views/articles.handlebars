@@ -1,0 +1,19 @@
+<body>
+    <div id="wrapper">
+        <div id="imgCont"><img id="tfdbanner" src="../img/tfd.png" alt="TFD Banner"></div>
+
+        <button id="scrapeButton" class="mainbut"><h1>Scrape Articles</h1></button>
+        <h2>Click on an article below to leave a note on that article.</h2>
+
+        <div id="articles">
+            {{#each articles}}
+            <div class="article">
+            <a class="articleLink" data-id="{{this.id}}" href="{{this.link}}" target="_blank">{{this.title}}</a><button class="clickNote" data-id="{{this.id}}"><h4>Add Note</h4></button>
+            </div>
+            {{/each}}
+        </div>
+        <div id="notes"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>

@@ -1,0 +1,19 @@
+<body>
+    <div id="wrapper">
+        <div id="imgCont">
+            <img id="tfdbanner" src="../img/tfd.png" alt="TFD Banner">
+        </div>
+
+        <button id="home" class="mainbut"><h1>Home</h1></button>
+        <h2>Use the text box to choose or update the note's title and body.</h2>
+        <a class="articleLink" data-id="{{articles.id}}" href="{{articles.link}}" target="_blank">{{articles.title}}</a>
+        
+        <div id="notes">
+            <input id='titleinput' name='title' value="{{note.title}}"><br>
+            <textarea id='bodyinput' name='body'>{{note.body}}</textarea>
+            <button data-id='{{articles._id}}' id='savenote' class="mainbut"><h4>Submit Note</h4></button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>

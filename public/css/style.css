@@ -1,0 +1,70 @@
+      body { background-color: silver }
+      #wrapper {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+      }
+      h2 {
+        color: #eee5c7;
+      }
+      h1 {
+        color: black;
+      }
+      button {
+        border-radius: 6px; 
+        
+      }
+      .mainbut {
+        margin-top: 15px;
+      }
+      .clickNote {
+        margin-left: 25px;
+        height: 50px;
+      }
+      #articles {
+        display: inline-block;
+        overflow: auto;
+        width: 100%;
+        height: 500px;
+        margin-top: 20px;
+        border: white dashed 2px;
+      }
+      .article {
+        margin: 0px 3px 15px 3px;
+        padding: 5px 3px 15px 3px;
+        border-bottom: solid white 2px;
+      }
+      #notes {
+        float: none;
+        width: 65%;
+        margin-top:15px;
+      }
+      #imgCont {
+        width: 100%;
+      }
+      .articleLink {
+        text-decoration: none;
+        color:#eee5c7;
+        font-size: 24px;
+      }
+      .articleLink:visited {
+        color: white;
+      }
+      #tfdbanner {
+        width: 100%;
+        height: auto;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color:#eee5c7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
