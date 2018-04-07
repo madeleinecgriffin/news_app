@@ -48,7 +48,7 @@ require("./routes/apiRoutes.js")(app);
 
 // Connect to the Mongo DB
 var databaseUri = "mongodb://localhost/ArticleStore";
-var MONGODB_URI = "mongodb://hwUser:hwPassword@ds111648.mlab.com:11648/heroku_3gdj9dgt"
+var MONGODB_URI = "mongodb://hwUser:hwPassword@ds237989.mlab.com:37989/heroku_gg8ckxn8"
 
 if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI);
