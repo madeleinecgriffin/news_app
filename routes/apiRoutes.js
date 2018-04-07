@@ -6,7 +6,7 @@ var mongojs = require("mongojs");
 module.exports = function (app) {
 
     // A GET route for scraping the echoJS website
-    app.get("/scrape", function (req, res) {
+    app.get("/api/scrape", function (req, res) {
 
         axios.get("http://thefinancialdiet.com/").then(function (response) {
 
