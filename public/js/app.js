@@ -5,7 +5,7 @@ $(document).on("click", "#scrapeButton", function () {
     type: "GET"
   }).then(
     function (data) {
-      location.reload();
+      window.location.href = "/";
     }
   );
 });
