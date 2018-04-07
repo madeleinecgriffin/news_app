@@ -23,6 +23,7 @@ var hbs = exphbs.create({
           return moment(time, 'HH:mm a').format("hh:mm a");
       }
   }
+  
 })
 
 var PORT = 3000;
@@ -47,7 +48,7 @@ require("./routes/apiRoutes.js")(app);
 
 // Connect to the Mongo DB
 var databaseUri = "mongodb://localhost/ArticleStore";
-var MONGODB_URI = "mongodb://tester:tester@ds111648.mlab.com:11648/heroku_3gdj9dgt"
+var MONGODB_URI = "mongodb://hwUser:hwPassword@ds111648.mlab.com:11648/heroku_3gdj9dgt"
 
 if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI);
