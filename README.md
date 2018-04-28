@@ -1,6 +1,6 @@
 # Scraping News Articles with MongoDB
 
-This full stack app usese Cheerio to scrape new articles from [The Financial Diet](http://thefinancialdiet.com/), a financial advice website, and displays them on the App. It then allows you to store a note on each article. Each article stores the associated note so you can come back and update it at any time. Additionally, by clicking the **Scrape Articles** button you can scrape new articles and add them to the bottom of the list.
+This full stack app uses Cheerio to scrape new articles from [The Financial Diet](http://thefinancialdiet.com/), a financial advice website, and then uses Handlebars to display them on the App. It then allows you to store a note on each article. Each article stores the associated note so you can come back and update it at any time. Additionally, by clicking the **Scrape Articles** button you can scrape new articles and add them to the bottom of the list.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Click **Add Note** next to each article to add an associated note with each arti
 
 ## Installation
 
-Make sure all of the below dependencies are installed and install individually if needed with **npm install (dependency) --save**. See the built with section for details on each dependency.
+Make sure all of the below dependencies are installed and install individually if needed with **npm install (dependency) --save**. See the **Built With** section for details on each dependency.
 
 * body-parser
 * express
